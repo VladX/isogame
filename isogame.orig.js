@@ -194,7 +194,7 @@ function showLeaderboard(limit) {
             var score = snapshot.val().score;
             name = name.replace(/^[a-zA-Z0-9 ]/, '');
             score = typeof(score) == 'number' ? score : 'TBD';
-            $('#leaderboard table').prepend('<tr><td>' + snapshot.val().name + '</td><td>' + snapshot.val().score + '</td></tr>');
+            $('#leaderboard table').prepend('<tr><td>' + name + '</td><td>' + score + '</td></tr>');
         });
     });
 }
