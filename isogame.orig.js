@@ -122,9 +122,10 @@ var database = firebase.database();
 function gameOver() {
     clearInterval(intervalFunID);
     intervalFunID = 0;
-    $("#score").html(score + " — Game over!");
+    $("#score").html(score + " — Game over! Click again to restart.");
     $(".correct").addClass("correct-show");
     $(".graph-display").unbind("click");
+    $(".graph-display").click(reloadGame);
     database.ref('leaderboard').push().set({'name': playerName, 'score': score});
 }
 
@@ -150,6 +151,9 @@ function updateGame(n) {
     $("#sel-0").removeClass("correct");
     $("#sel-1").removeClass("correct");
     $("#sel-2").removeClass("correct");
+    $("#sel-0").removeClass("correct-show");
+    $("#sel-1").removeClass("correct-show");
+    $("#sel-2").removeClass("correct-show");
     $("#sel-" + ansPerm[0]).addClass("correct");
 }
 
@@ -184,6 +188,7 @@ function startGame() {
     score = 0;
     $("#time").html(timeout);
     $("#score").html(score);
+    $(".graph-display").unbind("click");
     $(".graph-display").click(onChoose);
 }
 
@@ -193,6 +198,7 @@ function nameEscape(name) {
 
 function showLeaderboard(limit) {
     database.ref('leaderboard').orderByChild('score').limitToLast(limit).once('value').then(function(snapshot) {
+        $('#leaderboard table').html('');
         snapshot.forEach(function(snapshot) {
             var name = nameEscape(snapshot.val().name);
             var score = snapshot.val().score;
@@ -202,7 +208,7 @@ function showLeaderboard(limit) {
     });
 }
 
-$(function() {
+function reloadGame() {
     showLeaderboard(25);
     playerName = $.cookie('isogame-name');
     if (playerName == undefined) {
@@ -215,4 +221,6 @@ $(function() {
         $.cookie('isogame-name', playerName, { expires: 7, path: '/' });
     }
     startGame();
-});
+}
+
+$(reloadGame);
