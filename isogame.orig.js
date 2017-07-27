@@ -187,12 +187,15 @@ function startGame() {
     $(".graph-display").click(onChoose);
 }
 
+function nameEscape(name) {
+    return name.replace(/[^a-zA-Z0-9 ]+/g, '').replace(/[a-zA-Z0-9]{16,}/g, '').replace(/[ ]+/g, ' ').slice(0, 32);
+}
+
 function showLeaderboard(limit) {
     database.ref('leaderboard').orderByChild('score').limitToLast(limit).once('value').then(function(snapshot) {
         snapshot.forEach(function(snapshot) {
-            var name = snapshot.val().name;
+            var name = nameEscape(snapshot.val().name);
             var score = snapshot.val().score;
-            name = name.replace(/^[a-zA-Z0-9 ]/, '');
             score = typeof(score) == 'number' ? score : 'TBD';
             $('#leaderboard table').prepend('<tr><td>' + name + '</td><td>' + score + '</td></tr>');
         });
@@ -208,8 +211,7 @@ $(function() {
             if (playerName != null)
                 break;
         }
-        if (playerName.length > 32)
-            playerName = playerName.slice(0, 32);
+        playerName = nameEscape(playerName);
         $.cookie('isogame-name', playerName, { expires: 7, path: '/' });
     }
     startGame();
