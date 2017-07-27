@@ -190,6 +190,10 @@ function startGame() {
 function showLeaderboard(limit) {
     database.ref('leaderboard').orderByChild('score').limitToLast(limit).once('value').then(function(snapshot) {
         snapshot.forEach(function(snapshot) {
+            var name = snapshot.val().name;
+            var score = snapshot.val().score;
+            name = name.replace(/^[a-zA-Z0-9 ]/, '');
+            score = typeof(score) == 'number' ? score : 'TBD';
             $('#leaderboard table').prepend('<tr><td>' + snapshot.val().name + '</td><td>' + snapshot.val().score + '</td></tr>');
         });
     });
