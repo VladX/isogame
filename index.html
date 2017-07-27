@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/png" href="favicon.png">
+	<title>Graph Isomorphism Game</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="jquery.cookie.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="leaderboard"><div align="center"><h3>Leaderboard</h3></div><table></table></div>
+
+<div id="score">0</div>
+<div id="time">5</div>
+
+<div align="center">Choose a graph which is isomorphic to this</div>
+<div id="graph-reference" align="center">
+<svg id="graph-example"></svg>
+</div>
+<div id="selectors" align="center">
+<svg id="sel-0" class="graph-display"></svg><svg id="sel-1" class="graph-display"></svg><svg id="sel-2" class="graph-display"></svg>
+</div>
+<div id="rules">
+Rules are straightforward. You need to choose a correct answer and you only have 5 seconds to respond. If you run out of time&nbsp;—&nbsp;you will lose. Incorrect choice will lead you to losing as well. In case of a correct answer your score will rise and a next question will follow. The faster you answer, the more points you get. More precisely, you will add up N&#215;T points to your final score, where N is the number of vertices and T is the remaining time. As you move forward, the number of vertices in a graph steadily increases.<br />
+<br />
+Author: Vladislav Samsonov<br />
+Contact: <a href="mailto:me@xpast.me">me@xpast.me</a>
+</div>
+
+<script src="isogame.js"></script>
+</body>
+</html>

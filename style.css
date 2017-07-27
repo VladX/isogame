@@ -1,0 +1,77 @@
+body {
+    background: #ddd;
+    color: #000;
+    margin: 0;
+    padding: 50px;
+    font-family: Georgia;
+    font-size: 12pt;
+}
+
+#score {
+    width: 100%;
+    text-align: center;
+    font-size: 38pt;
+    font-weight: bold;
+    color: #008aff;
+}
+
+#time {
+    width: 100%;
+    text-align: center;
+    font-size: 26pt;
+    font-weight: bold;
+    padding: 20px 0 40px 0;
+}
+
+.graph-display {
+    width: 300px;
+    height: 300px;
+    border: 4px dashed #000;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 10px;
+}
+
+#graph-example {
+    width: 300px;
+    height: 300px;
+}
+
+.graph-display:hover {
+    border-style: solid;
+    cursor: pointer;
+}
+
+.graph-edge {
+    stroke: #000;
+    stroke-width: 2;
+}
+
+.correct-show {
+    border-color: #3edb00;
+}
+
+#leaderboard {
+    position: absolute;
+    width: 8%;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 10pt;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+#leaderboard h3 {
+    font-size: 11pt;
+}
+
+#leaderboard table {
+    width: 100%;
+}
+
+#rules {
+    padding: 50px;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 11pt;
+}
