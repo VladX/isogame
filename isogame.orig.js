@@ -196,8 +196,9 @@ function showLeaderboard(limit) {
 }
 
 $(function() {
-    showLeaderboard(20);
-    if ($.cookie('isogame-name') == undefined) {
+    showLeaderboard(25);
+    playerName = $.cookie('isogame-name');
+    if (playerName == undefined) {
         while (1) {
             playerName = prompt("Please enter your name", "Guest on " + navigator.platform);
             if (playerName != null)
